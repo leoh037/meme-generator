@@ -1,0 +1,125 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    background: gray;
+  }
+
+  .app-container {
+    margin: auto;
+    position: relative;
+    width: 550px;
+    height: 550px;
+    border-radius: 8.95px;
+    background: #FFF;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 550px;
+    height: 65px;
+    flex-shrink: 0;
+    background: linear-gradient(90deg, #672280 1.18%, #A626D3 100%);
+    padding-left: 28px;
+    padding-right: 29px;;
+  }
+
+  .title-container {
+    width: 172px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* margin-left: 29px; */
+  }
+
+  .troll-image-container {
+    width: 31.306px;
+    height: 26.218px;
+    flex-shrink: 0;
+  }
+
+  .troll-image {
+    height: 100%;
+    width: 100%;
+  }
+
+  .title {
+    color: #FFF;
+    font-family: 'Karla', sans-serif;
+    font-size: 20.748px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -2.075px;
+  }
+
+  .project-info {
+    width: 189px;
+    height: 14px;
+    flex-shrink: 0;
+    color: #FFF;
+    font-family: 'Inter';
+    text-align: right;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  
+  .inputs-container {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 37px;
+    padding-right: 37px;
+    margin-top: 28px;
+  }
+
+  .input-label {
+    color: var(--gray-700, #374151);
+    font-family: 'Karla', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16.375px; /* 116.963% */
+  }
+
+  input {
+    width: 222px;
+    display: flex;
+    padding: 7.369px 10.644px;
+    align-items: center;
+    gap: 6.55px;
+    border-radius: 4.912px;
+    border: 0.819px solid var(--gray-300, #D1D5DB);
+    background: var(--white, #FFF);
+    box-shadow: 0px 0.819px 1.637px 0px rgba(0, 0, 0, 0.05);
+    outline: none;
+    text-indent: 5px;
+  }
+
+  button {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-shrink: 0;
+    margin: 15px 37px 0px;
+    width: 477px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(90deg, #711F8D 1.14%, #A818DA 100%);
+    cursor: pointer;
+
+    color: #FFF;
+    text-align: center;
+    font-family: 'Karla', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -1.6px;
+  }
