@@ -1,6 +1,16 @@
+import {useState} from 'react'
 import memesData from "../memesData"
 
+
 function Meme() {
+
+    const[memeImage, setMemeImage] = useState("");
+
+    function getMemeImage() {
+        const url = getImageURL();
+        setMemeImage(url)
+    }
+
     return (
         <main>
             <div className="inputs-container">
@@ -13,18 +23,21 @@ function Meme() {
                     <input type="text" id="input-bottom-text"></input>
                 </div>
             </div>
-            <button onClick={getMemeInfo}>Get a new meme image 🖼</button>
+            <button onClick={getMemeImage}>Get a new meme image 🖼</button>
+            <div className="meme-image-container">
+                <img className="meme-image" src={memeImage}></img>
+            </div>
+
         </main>
     )
   }
 
-  function getMemeInfo() {
+  function getImageURL() {
     const memesArray = memesData.data.memes;
     const memeIndex = Math.floor(Math.random() * memesArray.length);
     const meme = memesArray[memeIndex];
-    const id = meme.id;
     const url = meme.url;
-    console.log("id = " + id + ", url = " + url);
+    return url;
   }
   
   export default Meme;

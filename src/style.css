@@ -123,3 +123,15 @@
     line-height: normal;
     letter-spacing: -1.6px;
   }
+
+  .meme-image-container {
+    width: 477px;
+    height: 268px;
+    flex-shrink: 0;
+    margin: 32px auto;
+  }
+
+  .meme-image {
+    height: 100%;
+    width: 100%;
+  }
