@@ -25,9 +25,9 @@ function Meme() {
             </div>
             <button onClick={getMemeImage}>Get a new meme image 🖼</button>
             <div className="meme-image-container">
-                <img className="meme-image" src={memeImage}></img>
+                {/* <img style={{display: (memeImage === "") ? "none" : "block"}}className="meme-image" src={memeImage}></img> */}
+                {memeImage != "" && <img className="meme-image" src={memeImage}></img>}
             </div>
-
         </main>
     )
   }
