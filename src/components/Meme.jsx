@@ -4,12 +4,28 @@ import memesData from "../memesData"
 
 function Meme() {
 
-    const[memeImage, setMemeImage] = useState("");
+    const[meme, setMeme] = useState({
+        topText: "",
+        bottomText: "",
+        randomImage: ""
+    })
+
+    const [allMemeImages, setAllMemeImages] = useState(memesData)
 
     function getMemeImage() {
-        const url = getImageURL();
-        setMemeImage(url)
+        setMeme(prevMeme => ({
+            ...prevMeme, 
+            randomImage: getImageURL()
+        }))
     }
+
+    function getImageURL() {
+        const memesArray = allMemeImages.data.memes;
+        const memeIndex = Math.floor(Math.random() * memesArray.length);
+        const meme = memesArray[memeIndex];
+        const url = meme.url;
+        return url;
+      }
 
     return (
         <main>
@@ -26,18 +42,10 @@ function Meme() {
             <button onClick={getMemeImage}>Get a new meme image 🖼</button>
             <div className="meme-image-container">
                 {/* <img style={{display: (memeImage === "") ? "none" : "block"}}className="meme-image" src={memeImage}></img> */}
-                {memeImage != "" && <img className="meme-image" src={memeImage}></img>}
+                {meme.randomImage != "" && <img className="meme-image" src={meme.randomImage}></img>}
             </div>
         </main>
     )
-  }
-
-  function getImageURL() {
-    const memesArray = memesData.data.memes;
-    const memeIndex = Math.floor(Math.random() * memesArray.length);
-    const meme = memesArray[memeIndex];
-    const url = meme.url;
-    return url;
   }
   
   export default Meme;
