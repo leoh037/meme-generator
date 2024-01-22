@@ -12,10 +12,11 @@ function Meme() {
 
     const [allMemeImages, setAllMemeImages] = useState(memesData)
 
-    function getMemeImage() {
+    function handleEvent(event) {
+        const {name, value, type} = event.target
         setMeme(prevMeme => ({
             ...prevMeme, 
-            randomImage: getImageURL()
+            [name]: type === "text" ? value : getImageURL()
         }))
     }
 
@@ -27,18 +28,6 @@ function Meme() {
         return url;
     }
 
-    function handleChange(event){
-        const {name, value} = event.target
-        setMeme(prevMeme => {
-            return{
-                ...prevMeme,
-                [name] : value
-            }
-        })
-    }
-
-    console.log("top : " + meme.topText, " bottom : " + meme.bottomText);
-
     return (
         <main>
             <div className="inputs-container">
@@ -46,9 +35,10 @@ function Meme() {
                     <label htmlFor="input-top-text" className="input-label">Top text</label>
                     <input 
                         type="text" 
+                        disabled={meme.randomImage == ""}
                         id="input-top-text"
                         name="topText"
-                        onChange={handleChange}
+                        onChange={handleEvent}
                         value={meme.topText}
                     />
                 </div>
@@ -56,14 +46,15 @@ function Meme() {
                     <label htmlFor="input-bottom-text" className="input-label">Bottom text</label>
                     <input 
                         type="text" 
+                        disabled={meme.randomImage == ""}
                         id="input-bottom-text"
                         name="bottomText"
-                        onChange={handleChange}
+                        onChange={handleEvent}
                         value={meme.bottomText}
                     />
                 </div>
             </div>
-            <button onClick={getMemeImage}>Get a new meme image 🖼</button>
+            <button name="randomImage" onClick={handleEvent}>Get a new meme image 🖼</button>
             <div className="meme-image-container">
                 {/* <img style={{display: (memeImage === "") ? "none" : "block"}}className="meme-image" src={memeImage}></img> */}
                 {meme.randomImage != "" && <img className="meme-image" src={meme.randomImage}></img>}
