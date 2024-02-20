@@ -1,5 +1,4 @@
-import {useState} from 'react'
-import memesData from "../memesData"
+import {useState, useEffect} from 'react'
 
 
 function Meme() {
@@ -10,7 +9,13 @@ function Meme() {
         randomImage: ""
     })
 
-    const [allMemeImages, setAllMemeImages] = useState(memesData)
+    const [allMemes, setallMemes] = useState([])
+
+    useEffect(() => {
+        fetch("https://api.imgflip.com/get_memes")
+            .then(res => res.json())
+            .then(resObj => setallMemes(resObj.data.memes))
+    }, [])
 
     function handleEvent(event) {
         const {name, value, type} = event.target
@@ -21,9 +26,8 @@ function Meme() {
     }
 
     function getImageURL() {
-        const memesArray = allMemeImages.data.memes;
-        const memeIndex = Math.floor(Math.random() * memesArray.length);
-        const meme = memesArray[memeIndex];
+        const memeIndex = Math.floor(Math.random() * allMemes.length);
+        const meme = allMemes[memeIndex];
         const url = meme.url;
         return url;
     }
@@ -54,7 +58,7 @@ function Meme() {
                     />
                 </div>
             </div>
-            <button name="randomImage" onClick={handleEvent}>Get a new meme image 🖼</button>
+            <button name="randomImage" onClick={ }>Get a new meme image 🖼</button>
             <div className="meme-image-container">
                 {/* <img style={{display: (memeImage === "") ? "none" : "block"}}className="meme-image" src={memeImage}></img> */}
                 {meme.randomImage != "" && <img className="meme-image" src={meme.randomImage}></img>}
