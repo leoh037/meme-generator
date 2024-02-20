@@ -58,7 +58,7 @@ function Meme() {
                     />
                 </div>
             </div>
-            <button name="randomImage" onClick={ }>Get a new meme image 🖼</button>
+            <button name="randomImage" onClick={handleEvent}>Get a new meme image 🖼</button>
             <div className="meme-image-container">
                 {/* <img style={{display: (memeImage === "") ? "none" : "block"}}className="meme-image" src={memeImage}></img> */}
                 {meme.randomImage != "" && <img className="meme-image" src={meme.randomImage}></img>}
